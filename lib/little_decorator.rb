@@ -6,7 +6,7 @@ ActiveSupport.on_load(:action_view) { include LittleDecorator::Helper }
 class LittleDecorator
 
   attr_reader :record, :view
-  delegate :to_param, to: :record
+  delegate :to_param, :after_find, to: :record
 
   def initialize(record, view=nil)
     @record, @view = record, view
