@@ -13,6 +13,10 @@ class LittleDecorator
   end
   alias_method :model, :record
 
+  def self.convert_all
+    convert_all if respond_to?(:convert_all)
+  end
+
   def method_missing(method_name, *args, &block)
     [record, view].each do |item|
       return item.public_send(method_name, *args, &block) if item.respond_to?(method_name)
