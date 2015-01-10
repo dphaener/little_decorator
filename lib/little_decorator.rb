@@ -6,7 +6,7 @@ ActiveSupport.on_load(:action_view) { include LittleDecorator::Helper }
 class LittleDecorator
 
   attr_reader :record, :view
-  delegate :to_param, :after_find, to: :record
+  delegate :to_param, to: :record
 
   def initialize(record, view=nil)
     @record, @view = record, view
@@ -14,7 +14,7 @@ class LittleDecorator
   alias_method :model, :record
 
   def self.convert_all_units
-    convert_all if respond_to?(:convert_all)
+    self.convert_all if respond_to?(:convert_all)
   end
 
   def method_missing(method_name, *args, &block)
