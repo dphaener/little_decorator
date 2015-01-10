@@ -14,6 +14,8 @@ class LittleDecorator
   alias_method :model, :record
 
   def self.convert_all_units
+    Rails.logger.debug "FOO!"
+    Rails.logger.debug respond_to?(:convert_all)
     self.convert_all if respond_to?(:convert_all)
   end
 
