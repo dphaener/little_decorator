@@ -13,7 +13,7 @@ class LittleDecorator
   end
   alias_method :model, :record
 
-  def self.convert_all
+  def self.convert_all_units
     convert_all if respond_to?(:convert_all)
   end
 
